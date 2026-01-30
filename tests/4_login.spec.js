@@ -15,13 +15,11 @@ test("Verify the login scenario", async ({ page }) => {
   passwordInput.fill("Password123");
 
   // find the Submit button
-  const submitButton = await page.getByRole('button', {name : "Submit"});
+  const submitButton = await page.getByRole("button", { name: "Submit" });
   await expect(submitButton).toBeVisible();
   submitButton.click();
 
   // verify the user login success message "Logged In Successfully"
- const successMessage =  await page.getByText("Logged In Successfully");
-   await expect(successMessage).toBeVisible();
-
-
+  const successMessage = await page.getByText("Logged In Successfully");
+  await expect(successMessage).toBeVisible();
 });

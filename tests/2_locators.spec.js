@@ -29,17 +29,15 @@ test("1) Locate by role", async ({ page }) => {
   await expect(loginButton).toBeVisible();
 });
 
-
-
 test("2) Locate by text", async ({ page }) => {
   // open url
   await page.goto(
     "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
   );
 
-//   // find the "Login" header using text
-//   const loginHeader = await page.getByText("Login");
-//   await expect(loginHeader).toBeVisible();
+  //   // find the "Login" header using text
+  //   const loginHeader = await page.getByText("Login");
+  //   await expect(loginHeader).toBeVisible();
 
   // find the username label
   const usernameLabel = await page.getByText("Username");
@@ -52,38 +50,28 @@ test("2) Locate by text", async ({ page }) => {
   // find the  Login  button
   const loginButton = await page.getByText(" Login ");
   await expect(loginButton).toBeVisible();
-
 });
-
-
 
 test("3) Locate by label", async ({ page }) => {
   // open url
   await page.goto("https://dd-demo-tau.vercel.app/textbox.html");
 
- // find the full name label using element label text
+  // find the full name label using element label text
 
- // manual wait 
- await page.waitForTimeout(5000);
+  // manual wait
+  await page.waitForTimeout(5000);
 
+  // username
 
- // username
+  const fullNameLabel = await page.getByLabel("Full Name:");
 
- const fullNameLabel = await page.getByLabel("Full Name:");
+  await expect(fullNameLabel).toBeVisible();
 
- await expect(fullNameLabel).toBeVisible();
+  // Email:
+  const emailLabel = await page.getByLabel("Email:");
 
-// Email:
- const emailLabel = await page.getByLabel("Email:");
-
- await expect(emailLabel).toBeVisible();
-
-
-
-
+  await expect(emailLabel).toBeVisible();
 });
-
-
 
 test("4) Locate by placeholder", async ({ page }) => {
   // open url
@@ -91,14 +79,12 @@ test("4) Locate by placeholder", async ({ page }) => {
     "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
   );
 
-
   // Username Input using placeholder value => "Username"
 
-  const usernameInput = await page.getByPlaceholder("Username")
-   await expect(usernameInput).toBeVisible();
+  const usernameInput = await page.getByPlaceholder("Username");
+  await expect(usernameInput).toBeVisible();
 
-   // Password
+  // Password
   const passwordInput = await page.getByPlaceholder("Password");
-     await expect(passwordInput).toBeVisible();
-
+  await expect(passwordInput).toBeVisible();
 });
