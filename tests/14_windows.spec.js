@@ -4,19 +4,19 @@
 
 import { test, expect } from '@playwright/test';
 
-test('Open New Window Tab (side)', async ({ page1 }) => {
-
+test('Open New Window Tab (side)', async ({ page }) => {
+// page1 to page - rca 
 
     // open url 
-  await page1.goto('https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_open');  
+  await page.goto('https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_open');  
   
   // validate the button visibility   
-  await expect(page1.locator('iframe[name="iframeResult"]').contentFrame().getByRole('button', { name: 'Try it' })).toBeVisible();
+  await expect(page.locator('iframe[name="iframeResult"]').contentFrame().getByRole('button', { name: 'Try it' })).toBeVisible();
 
-  const page2Promise = page1.waitForEvent('popup');
+  const page2Promise = page.waitForEvent('popup');
 
   // click on the button 
-  await page1.locator('iframe[name="iframeResult"]').contentFrame().getByRole('button', { name: 'Try it' }).click();
+  await page.locator('iframe[name="iframeResult"]').contentFrame().getByRole('button', { name: 'Try it' }).click();
 
   const page2 = await page2Promise;
 
